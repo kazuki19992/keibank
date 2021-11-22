@@ -78,6 +78,11 @@ const gradeBadge = (grade) => {
       badgeStyle.backgroundColor = '#2196f3'
       break
     }
+    default:{
+      badgeStyle.backgroundColor = '#2196f3'
+      grade = "一般"
+      break
+    }
   }
   return (
     <div style={badgeStyle}>

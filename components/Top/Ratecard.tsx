@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -15,6 +15,43 @@ const CustomCard = styled(Card)({
 })
 
 export const Ratecard = React.memo(function PricingCard() {
+  const [balance, setBalance] = useState(0)
+  const [status, setStatus] = useState('get')
+  useEffect(() => {
+    const betdata = localStorage.getItem('betdata')
+    if(betdata){
+      // データがある場合
+      const betdataList = JSON.parse(betdata)
+      let totalBalance = 0
+      for(const data of betdataList){
+        totalBalance += data.balance
+        console.log(totalBalance)
+      }
+      setBalance(totalBalance)
+      setStatus('confirm')
+
+    }else{
+      // データがない場合
+      setStatus('nonData')
+    }
+  }, [])
+
+  const getStatus = () => {
+    switch(status){
+      case 'get': {
+        return '取得中...'
+      }
+      case 'confirm': {
+        if(balance > 0){
+          return '+' + balance + '円'
+        }
+        return balance + '円'
+      }
+      case 'nonData': {
+        return '通帳なし'
+      }
+    }
+  }
   return (
     <div style={{width: '100%'}}>
       <CustomCard>
@@ -22,14 +59,14 @@ export const Ratecard = React.memo(function PricingCard() {
         <Divider variant="middle" />
         <CardContent>
           <Typography variant="h4" align="center">
-            + 250円
+            {getStatus()}
           </Typography>
         </CardContent>
         <Divider variant="middle" />
         <CardActions>
           <div style={{display: 'flex', justifyContent: 'space-between', width: '100%', paddingInline: '0.5em'}}>
             <div style={{marginRight: '5px'}}>
-              <Button variant="outlined" color="inherit" href="https://www.netkeiba.com/">
+              <Button variant="outlined" color="inherit" href="/passbook">
                 競馬通帳
               </Button>
             </div>
