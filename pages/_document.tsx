@@ -52,6 +52,19 @@ class MyDocument extends Document {
           <link rel="icon" sizes="192x192" href="/icon-192x192.png" />
           <link rel="icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
+
+          {/* OGP */}
+          <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#" />
+          <title>KEIBANK</title>
+          <meta property="og:title" content="KEIBANK" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://keibank.kazuki19992.com" />
+          <meta property="og:image" content="https://keibank.kazuki19992.com/OGP.png" />
+          <meta property="og:site_name" content="KEIBANK" />
+          <meta property="og:description" content="競馬の収支管理をしましょう！" />
+
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@Tech_Kazu" />
         </Head>
         <body>
           <Main />
