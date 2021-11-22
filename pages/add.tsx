@@ -11,6 +11,7 @@ import Layout from '../components/Layout'
 import { useState } from 'react'
 import { Typography } from '@mui/material'
 import { TextField } from '@mui/material'
+import { redirect } from 'next/dist/server/api-utils'
 
 
 const Home: NextPage = () => {
@@ -77,7 +78,7 @@ const Home: NextPage = () => {
       list.unshift(listObject)
       console.log(list)
       localStorage.setItem('betdata', JSON.stringify(list))
-
+      alert("記帳しました！")
     }else{
       // データが存在しなかった場合
       console.log("データが無かったよ！")
@@ -95,7 +96,9 @@ const Home: NextPage = () => {
       list.push(listObject)
       console.log(list)
       localStorage.setItem('betdata', JSON.stringify(list))
+      alert("通帳を作成して記帳しました！")
     }
+    location.href = '/'
   }
 
   return (

@@ -17,6 +17,7 @@ const deletePassbook = () => {
     if(confirm("後悔しませんね？")){
       localStorage.removeItem('betdata')
       alert("通帳を削除しました")
+      location.href = '/'
     }
   }
 }
