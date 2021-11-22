@@ -72,7 +72,7 @@ export const Ratecard = React.memo(function PricingCard() {
             </div>
             <div style={{display: 'flex'}}>
               <div style={{marginRight: '5px'}}>
-                <Button variant="outlined" color="inherit" href="">
+                <Button variant="outlined" color="inherit" href="https://www.ipat.jra.go.jp/">
                   ネット投票
                 </Button>
               </div>
